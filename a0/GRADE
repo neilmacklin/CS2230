@@ -1,0 +1,16 @@
+./conv 13 2
+1101
+./conv 236709 8
+716245
+./conv 1352275 11
+843A91
+./conv 38572856 64
+2J9Cu
+./conv 3232236286 256
+192.168.2.254
+./conv
+./conv 11111 65
+Invalid base
+
+Grade: 18/20
+Looks pretty good. Your first 2 functions are pretty long and could be reduced to just a few lines of code. Mask/shift looks good and base 256 is great. You are getting a seg fault when no args are provided, make sure to error check.
