@@ -1,0 +1,133 @@
+
+a2prac.elf:     file format elf32-msp430
+
+
+Disassembly of section .text:
+
+0000c000 <MAIN>:
+    c000:	b2 40 80 5a 	mov	#23168,	&0x0120	;#0x5a80
+    c004:	20 01 
+    c006:	d2 42 ff 10 	mov.b	&0x10ff,&0x0057	
+    c00a:	57 00 
+    c00c:	d2 42 fe 10 	mov.b	&0x10fe,&0x0056	
+    c010:	56 00 
+    c012:	31 40 00 04 	mov	#1024,	r1	;#0x0400
+    c016:	f2 d0 07 00 	bis.b	#7,	&0x002a	;#0x0007
+    c01a:	2a 00 
+    c01c:	d2 40 e3 ff 	mov.b	-29(r0),&0x0029	;PC rel. 0xc001
+    c020:	29 00 
+    c022:	3f 40 e8 03 	mov	#1000,	r15	;#0x03e8
+    c026:	b0 12 2c c0 	call	#0xc02c	
+    c02a:	f8 3f       	jmp	$-14     	;abs 0xc01c
+
+0000c02c <delay_ms>:
+    c02c:	0e 4f       	mov	r15,	r14	
+    c02e:	3f 40 f5 00 	mov	#245,	r15	;#0x00f5
+    c032:	1f 83       	dec	r15		
+    c034:	0f 93       	tst	r15		
+    c036:	fd 23       	jnz	$-4      	;abs 0xc032
+    c038:	1e 83       	dec	r14		
+    c03a:	f9 23       	jnz	$-12     	;abs 0xc02e
+    c03c:	30 41       	ret			
+
+Disassembly of section .debug_aranges:
+
+00000000 <.debug_aranges>:
+   0:	10 00       	.word	0x0010;	????	
+   2:	00 00       	.word	0x0000;	????	
+   4:	02 00       	.word	0x0002;	????	
+   6:	00 00       	.word	0x0000;	????	
+   8:	00 00       	.word	0x0000;	????	
+   a:	02 00       	.word	0x0002;	????	
+   c:	00 c0       	bic	r0,	r0	
+   e:	3e 00       	.word	0x003e;	????	
+  10:	00 00       	.word	0x0000;	????	
+	...
+
+Disassembly of section .debug_info:
+
+00000000 <.debug_info>:
+   0:	3c 00       	.word	0x003c;	????	
+   2:	00 00       	.word	0x0000;	????	
+   4:	02 00       	.word	0x0002;	????	
+   6:	00 00       	.word	0x0000;	????	
+   8:	00 00       	.word	0x0000;	????	
+   a:	02 01       	.word	0x0102;	????	
+   c:	00 00       	.word	0x0000;	????	
+   e:	00 00       	.word	0x0000;	????	
+  10:	00 c0       	bic	r0,	r0	
+  12:	3e c0 61 32 	bic	#12897,	r14	;#0x3261
+  16:	70 72       	subc.b	#8,	r0	;r2 As==11
+  18:	61 63       	addc.b	#2,	r1	;r3 As==10
+  1a:	2e 53       	incd	r14		
+  1c:	00 2f       	jc	$-510    	;abs 0xfe1e
+  1e:	68 6f       	addc.b	@r15,	r8	
+  20:	6d 65       	addc.b	@r5,	r13	
+  22:	2f 6c       	addc	@r12,	r15	
+  24:	33 2f       	jc	$-408    	;abs 0xfe8c
+  26:	43 53       	.word	0x5343;	????	Illegal as emulation instr
+  28:	32 32       	jn	$-922    	;abs 0xfc8e
+  2a:	33 30       	jn	$+104    	;abs 0x92
+  2c:	2f 61       	addc	@r1,	r15	
+  2e:	32 00       	.word	0x0032;	????	
+  30:	47 4e       	mov.b	r14,	r7	
+  32:	55 20       	jnz	$+172    	;abs 0xde
+  34:	41 53       	add.b	#0,	r1	;r3 As==00
+  36:	20 32       	jn	$-958    	;abs 0xfc78
+  38:	2e 32       	jn	$-930    	;abs 0xfc96
+  3a:	31 2e       	jc	$-924    	;abs 0xfc9e
+  3c:	31 00       	.word	0x0031;	????	
+  3e:	01 80       	sub	r0,	r1	
+
+Disassembly of section .debug_abbrev:
+
+00000000 <.debug_abbrev>:
+   0:	01 11       	rra	r1		
+   2:	00 10       	rrc	r0		
+   4:	06 11       	rra	r6		
+   6:	01 12       	push	r1		
+   8:	01 03       	.word	0x0301;	????	
+   a:	08 1b       	.word	0x1b08;	????	
+   c:	08 25       	jz	$+530    	;abs 0x21e
+   e:	08 13       	reti			;return from interupt
+  10:	05 00       	.word	0x0005;	????	
+	...
+
+Disassembly of section .debug_line:
+
+00000000 <.debug_line>:
+   0:	42 00       	.word	0x0042;	????	
+   2:	00 00       	.word	0x0000;	????	
+   4:	02 00       	.word	0x0002;	????	
+   6:	1f 00       	.word	0x001f;	????	
+   8:	00 00       	.word	0x0000;	????	
+   a:	01 01       	.word	0x0101;	????	
+   c:	fb 0e       	.word	0x0efb;	????	
+   e:	0d 00       	.word	0x000d;	????	
+  10:	01 01       	.word	0x0101;	????	
+  12:	01 01       	.word	0x0101;	????	
+  14:	00 00       	.word	0x0000;	????	
+  16:	00 01       	.word	0x0100;	????	
+  18:	00 00       	.word	0x0000;	????	
+  1a:	01 00       	.word	0x0001;	????	
+  1c:	61 32       	jn	$-828    	;abs 0xfce0
+  1e:	70 72       	subc.b	#8,	r0	;r2 As==11
+  20:	61 63       	addc.b	#2,	r1	;r3 As==10
+  22:	2e 53       	incd	r14		
+  24:	00 00       	.word	0x0000;	????	
+  26:	00 00       	.word	0x0000;	????	
+  28:	00 00       	.word	0x0000;	????	
+  2a:	03 02       	.word	0x0203;	????	
+  2c:	00 c0       	bic	r0,	r0	
+  2e:	03 11       	rra	#0		;r3 As==00
+  30:	01 67       	addc	r7,	r1	
+  32:	67 69       	addc.b	@r9,	r7	
+  34:	4c 69       	addc.b	r9,	r12	
+  36:	67 4b       	mov.b	@r11,	r7	
+  38:	4b 33       	jn	$-360    	;abs 0xfed0
+  3a:	2f 4b       	mov	@r11,	r15	
+  3c:	2f 2f       	jc	$-416    	;abs 0xfe9c
+  3e:	2f 2f       	jc	$-416    	;abs 0xfe9e
+  40:	2f 02       	.word	0x022f;	????	
+  42:	02 00       	.word	0x0002;	????	
+  44:	01 01       	.word	0x0101;	????	
