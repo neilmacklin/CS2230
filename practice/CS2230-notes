@@ -1,0 +1,269 @@
+git:
+command:git commit -m "changed files" --- taking from staging area to git reposititory itself.(kind of like saving)
+command: git add fileName --- adds fileName to staging area
+command: git push --- send to instructor or wherever
+---------------------------------------git workflow for practice----------------------
+download and run python script to have git, may have already been installed during OS installation.
+
+hexadecimals:
+0xef + 0x23
+0x112
+using python:
+hex(0xef + 0x23)
+0x112
+e = 15
+f = 16
+(15 * 16) -1 = 239
+
+to represent a neg number you can use 2's complement (-128 to 127)
+239 -256
+
+-unsigned carry
+-signed overflow
+
+flags:
+c1 
+v0
+z0 (zero?)
+n0 (negative?)
+end of flags
+
+bitwise operations:
+& --- bitwise AND --> two 1s will be 1  but anything with a 0 will be a 0 (when the two bianries are lined up)
+--------
+|0 | 0 |
+--------
+|0 | 1 |
+--------
+&& --- boolean AND
+|| --- boolean OR
+| --- bitwise OR --> two 0s will be 0 but anything with a 1 will be a 1 (when the two binaries are lined up)
+--------
+|0 | 1 |
+--------
+|1 | 1 |
+--------
+^ --- XOR
+--------
+|0 | 1 |
+--------
+|1 | 0 |
+--------
+<< LEFT SHIFT (shifts bits)
+
+>> RIGHT SHIFT (shifts bits)
+(0xA7B2 >> 12) & 0xF --> python code will get you 10
+
+~ Not: if theres a 1 it makes a 0, and vice versa for a 0 (in binaries)
+
+&:
+0x33 & 0xAA = 0x22
+0011 0011 &
+1010 1010
+----------
+0010 0010---line them up in binary then if there are two 1s it is 1, anything else is 0
+
+0xafb2 & 0x000F = 2 --- used 000F because the 0s will always make a 0... we just wanted to check the 2 if it was a 1 or a 0
+
+
+
+
+
+for the assingment:
+the ./nameoffilerunner --- the inputs taken threough terminal are taken as ascii vals
+	for ascii table use --- man ascii via terminalt
+//end of help for the assignment
+------Leanr how to use a debugger in the terminal---------- 
+
+converting of different bases:
+TO BINARY<--->modulo # then divide it the modulos will give the binary: i.e.--> from 13 to binary 1101
+buf[31] = NULL;
+
+
+use the function --- atoi -> for parsing numbers
+to convert the IP address 192.168.2.46 to base 256
+192 * 256 ** 3 + 168 *256 ** 2 + 2 * 256 ** 1  + 46 * 256 ** 0
+
+mask and shift:
+212 & 0b111 ( base 8 )
+= 4
+212 >> 3
+= 26
+26 & 0b111
+= 2
+26 >> 3
+= 3
+3 & 0b111
+= 3
+3 >> 3
+0
+324
+
+
+--------------------
+check if > 1 first....
+if (convertThis&convertThis-1)....
+
+--------------------
+
+
+3 classes maybe??? 1 for 2 powers, 1 for ip address, and 1 for.....
+
+argc in main is = the number of arguments so ./Ctraining is 1 arg, the number you want to convert is 2 arg, and the base is the 3rd arg, so for this program there will be 3 arguments
+
+int count = 30;
+if (argc != 3) {
+print usage.....
+}
+else {
+int temp = argv[1];
+int base = argv[2];
+}
+while (temp!=0) {
+	a=temp%base;
+	temp=temp/base;
+	buf[count] =ascii[a];
+	count--;
+}
+printf();
+
+atol for long to handle longer numbers
+--------------------------------------
+or switch to unsigned integers
+num & 0xFF = i.e.254
+|2|5|4|
+ - - -  
+dec = num & 0xFF = 254
+dec % 10 = 4
+dec /10 = 25
+dec % 10 4
+dec = dec / 10 
+dec % 10 = 5
+
+------------------------------------------
+
+use a debugger in vim
+
+------------------------------------------
+
+P1DIR firection memory location 
+P1OUT on/off memory location 
+
+512bytes on msp430
+
+change the SOURCE in the makefile to my file but thts it.
+make
+make flash
+
+
+
+|-----------------------------------------|
+|Assembly language problem a1		  |
+|-----------------------------------------|
+screen /dev/ttyACM0 9600
+
+
+to leave screen:
+ctrl+a, then press k
+
+use the registers: 11, 12, 13, 14 ,15
+?add r14, r15?
+
+mov r15, 2 ---> move the number 2 to the register r15
+
+
+divide:
+
+
+------------------------------------------------------------------
+von neumann architechture - better
+harvard architechture
+
+add hex:
+........
+form is(0x16^1,16^0)	unsigned(0to255)			(-128to127)signed
+0x9E			(9*16^1+14[e]*16^0)158			-98	
+0x79			[(7*16^1+9*16^0)]121			121
+----					
+0x17			279-255=23				23
+------------------------------------------------------------------
+buffers:
+........
+Char* buf = "Hello"
+*buf or buf[0] would be 'H'
+*buf+1 or buf[1] would be 'e'
+
+------------------------------------------------------------------
+Assignment 2 (a2)						 |
+------------------------------------------------------------------
+'interupts' in assembly/C
+------------------------------------------------------------
+P1OUT first led1
+
+
+
+--------------------------------------------------------------
+--------------------------------------------------------------
+bis #GIE, r2 --- enable global interupts
+OUTMOD_4 -- NOT --OUTMOD_7
+0xfffa should be the TIMER_ISR -- the current one should be changed
+DO NOT delay_ms() inside the button interupt
+blue - P1.6 - TA0CCTL1 - 50% on and 50% off - Timer 0 - TA0CCR0 - (delay 62500 for half a second) (delay 31250 quarter of a second) (delay 41666 for a third of a 		second) 
+red 1000000/2 (50 on and 50 off) (delay 500000 half a second) ????P1.1????
+green p1.1 (Timer 1) TA1CCR0 (TA1CCTL0) (set CCIE) in interupt: (xor #BIT1, &P1OUT)
+1000 is 1 second
+TA0CCR0 is max number of 65535
+
+bic(bit clear) bits to go to stop mode
+	bic #MC_3, &TA0CTL 
+MC_0 is the number 0; no bits are set
+
+xor, bic, bic - specific bit in a 16 bit 
+mov - change every single bit in a 16 bit
+
+dont mess with P1.3(make sure that P1OUT isnt cleared using mov cause that will affect P1.3)
+mov.b works on 8 bit
+mov works on 16 bit
+
+page 370 in user guide
+
+TA0CCR0 is the number
+toggling the lights
+
+ - stop - ta1ctl = MC_0 or bic.b #MC_3, &TA1CTL
+ - start - ta1ctl = MC_1 or bis #MC_1, &TA1CTL
+Red - loop in main (off - xor ) (in the button interupt ---> ([off or on - cmp, bit]))
+Green - interupt on the timer 1, TA1CCR0 41667, Ta1CCTL0 interupt on this
+Blue - interupt on the timer 0, TA0CCR1(61,250), P1SEL(switching this to turn off)
+
+
+
+
+
+--------------------------------7 digit dispaly
+put 0s on segment you want to turn on
+
+1)turn off the digit
+2)go to the next digit
+3)choose next number (maybe using modulo and divide)
+4)turn on/off the segment pins(setting to 1 to off and 0 to on)
+5)turn on the next digit(using set to 0)
+6)return from the interupt or get out
+----------------------------------
+----------------------------------
+last project	in 'C'
+----------------------------------
+----------------------------------
+serial_init(9600);
+P1SEL &= ~BIT1
+P1SEL2 &= ~BIT1
+P2SEL &= ~(BIT6 | BIT7)
+
+unsigned int* &TA0CCR1 (0-1023)
+
+use: __eint(); to enable global interupts
+initailize_dtc(INCH_4, TA0CCR1);
+--------------------------------------
+gdb
+--------------------------------------
+in order to print TA0CCR1 or names like that put two underscores before it(like: __TA0CCR1)
