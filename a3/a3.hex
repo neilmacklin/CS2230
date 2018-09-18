@@ -1,0 +1,260 @@
+
+a3.elf:     file format elf32-msp430
+
+
+Disassembly of section .text:
+
+0000c000 <MAIN>:
+    c000:	b2 40 80 5a 	mov	#23168,	&0x0120	;#0x5a80
+    c004:	20 01 
+    c006:	d2 42 ff 10 	mov.b	&0x10ff,&0x0057	
+    c00a:	57 00 
+    c00c:	d2 42 fe 10 	mov.b	&0x10fe,&0x0056	
+    c010:	56 00 
+    c012:	31 40 00 04 	mov	#1024,	r1	;#0x0400
+    c016:	f2 d0 43 00 	bis.b	#67,	&0x0022	;#0x0043
+    c01a:	22 00 
+    c01c:	f2 d2 27 00 	bis.b	#8,	&0x0027	;r2 As==11
+    c020:	f2 42 21 00 	mov.b	#8,	&0x0021	;r2 As==11
+    c024:	f2 d2 25 00 	bis.b	#8,	&0x0025	;r2 As==11
+    c028:	f2 d2 24 00 	bis.b	#8,	&0x0024	;r2 As==11
+    c02c:	f2 c2 23 00 	bic.b	#8,	&0x0023	;r2 As==11
+    c030:	b2 d0 d0 02 	bis	#720,	&0x0160	;#0x02d0
+    c034:	60 01 
+    c036:	b2 40 12 7a 	mov	#31250,	&0x0172	;#0x7a12
+    c03a:	72 01 
+    c03c:	b2 d0 80 00 	bis	#128,	&0x0164	;#0x0080
+    c040:	64 01 
+    c042:	f2 c0 40 00 	bic.b	#64,	&0x0026	;#0x0040
+    c046:	26 00 
+    c048:	b2 d0 c0 02 	bis	#704,	&0x0180	;#0x02c0
+    c04c:	80 01 
+    c04e:	b2 d0 10 00 	bis	#16,	&0x0182	;#0x0010
+    c052:	82 01 
+    c054:	e2 d3 22 00 	bis.b	#2,	&0x0022	;r3 As==10
+    c058:	b2 40 c2 a2 	mov	#-23870,&0x0192	;#0xa2c2
+    c05c:	92 01 
+    c05e:	b2 40 c2 a2 	mov	#-23870,&0x0194	;#0xa2c2
+    c062:	94 01 
+    c064:	32 d2       	eint			
+    c066:	0b 43       	clr	r11		
+    c068:	2b 92       	cmp	#4,	r11	;r2 As==10
+    c06a:	fe 27       	jz	$-2      	;abs 0xc068
+    c06c:	3b 90 03 00 	cmp	#3,	r11	;#0x0003
+    c070:	fb 27       	jz	$-8      	;abs 0xc068
+    c072:	2b 93       	cmp	#2,	r11	;r3 As==10
+    c074:	f9 27       	jz	$-12     	;abs 0xc068
+    c076:	d2 e3 21 00 	xor.b	#1,	&0x0021	;r3 As==01
+    c07a:	3f 40 f4 01 	mov	#500,	r15	;#0x01f4
+    c07e:	b0 12 84 c0 	call	#0xc084	
+    c082:	f2 3f       	jmp	$-26     	;abs 0xc068
+
+0000c084 <delay_ms>:
+    c084:	0e 4f       	mov	r15,	r14	
+    c086:	3f 40 f5 00 	mov	#245,	r15	;#0x00f5
+    c08a:	1f 83       	dec	r15		
+    c08c:	0f 93       	tst	r15		
+    c08e:	fd 23       	jnz	$-4      	;abs 0xc08a
+    c090:	1e 83       	dec	r14		
+    c092:	f9 23       	jnz	$-12     	;abs 0xc086
+    c094:	30 41       	ret			
+
+0000c096 <UNEXPECTED_ISR>:
+    c096:	00 13       	reti			
+
+0000c098 <TIMER_ISR>:
+    c098:	e2 e3 21 00 	xor.b	#2,	&0x0021	;r3 As==10
+    c09c:	00 13       	reti			
+
+0000c09e <BUTTON_ISR>:
+    c09e:	0f 12       	push	r15		
+    c0a0:	0e 12       	push	r14		
+    c0a2:	1b 53       	inc	r11		
+    c0a4:	2b 92       	cmp	#4,	r11	;r2 As==10
+    c0a6:	13 24       	jz	$+40     	;abs 0xc0ce
+    c0a8:	1b 93       	cmp	#1,	r11	;r3 As==01
+    c0aa:	19 24       	jz	$+52     	;abs 0xc0de
+    c0ac:	2b 93       	cmp	#2,	r11	;r3 As==10
+    c0ae:	1b 24       	jz	$+56     	;abs 0xc0e6
+    c0b0:	3b 90 03 00 	cmp	#3,	r11	;#0x0003
+    c0b4:	1e 24       	jz	$+62     	;abs 0xc0f2
+    c0b6:	f2 b2 20 00 	bit.b	#8,	&0x0020	;r2 As==11
+    c0ba:	fd 23       	jnz	$-4      	;abs 0xc0b6
+    c0bc:	3f 40 78 00 	mov	#120,	r15	;#0x0078
+    c0c0:	b0 12 84 c0 	call	#0xc084	
+    c0c4:	f2 c2 23 00 	bic.b	#8,	&0x0023	;r2 As==11
+    c0c8:	3e 41       	pop	r14		
+    c0ca:	3f 41       	pop	r15		
+    c0cc:	00 13       	reti			
+
+0000c0ce <.mode_reset>:
+    c0ce:	f2 c0 40 00 	bic.b	#64,	&0x0026	;#0x0040
+    c0d2:	26 00 
+    c0d4:	0b 43       	clr	r11		
+    c0d6:	b2 c0 30 00 	bic	#48,	&0x0180	;#0x0030
+    c0da:	80 01 
+    c0dc:	ec 3f       	jmp	$-38     	;abs 0xc0b6
+
+0000c0de <.mode_two>:
+    c0de:	b2 d0 d0 02 	bis	#720,	&0x0180	;#0x02d0
+    c0e2:	80 01 
+    c0e4:	e8 3f       	jmp	$-46     	;abs 0xc0b6
+
+0000c0e6 <.mode_three>:
+    c0e6:	d2 c3 21 00 	bic.b	#1,	&0x0021	;r3 As==01
+    c0ea:	f2 d0 40 00 	bis.b	#64,	&0x0026	;#0x0040
+    c0ee:	26 00 
+    c0f0:	e2 3f       	jmp	$-58     	;abs 0xc0b6
+
+0000c0f2 <.mode_four>:
+    c0f2:	b2 40 c0 02 	mov	#704,	&0x0180	;#0x02c0
+    c0f6:	80 01 
+    c0f8:	e2 c3 21 00 	bic.b	#2,	&0x0021	;r3 As==10
+    c0fc:	b2 40 24 f4 	mov	#-3036,	&0x0172	;#0xf424
+    c100:	72 01 
+    c102:	d9 3f       	jmp	$-76     	;abs 0xc0b6
+
+Disassembly of section .vectors:
+
+0000ffe0 <_efartext+0xffe0>:
+    ffe0:	96 c0 96 c0 	bic	-16234(r0),-16226(r6);PC rel. 0xc078, 0xc09e(r6)
+    ffe4:	9e c0 
+    ffe6:	96 c0 96 c0 	bic	-16234(r0),-16234(r6);PC rel. 0xc07e, 0xc096(r6)
+    ffea:	96 c0 
+    ffec:	96 c0 96 c0 	bic	-16234(r0),-16234(r6);PC rel. 0xc084, 0xc096(r6)
+    fff0:	96 c0 
+    fff2:	96 c0 96 c0 	bic	-16234(r0),-16234(r6);PC rel. 0xc08a, 0xc096(r6)
+    fff6:	96 c0 
+    fff8:	96 c0 98 c0 	bic	-16232(r0),-16234(r6);PC rel. 0xc092, 0xc096(r6)
+    fffc:	96 c0 
+    fffe:	00 c0       	bic	r0,	r0	
+
+Disassembly of section .debug_aranges:
+
+00000000 <.debug_aranges>:
+   0:	10 00       	.word	0x0010;	????	
+   2:	00 00       	.word	0x0000;	????	
+   4:	02 00       	.word	0x0002;	????	
+   6:	00 00       	.word	0x0000;	????	
+   8:	00 00       	.word	0x0000;	????	
+   a:	02 00       	.word	0x0002;	????	
+   c:	00 c0       	bic	r0,	r0	
+   e:	04 01       	.word	0x0104;	????	
+  10:	00 00       	.word	0x0000;	????	
+	...
+
+Disassembly of section .debug_info:
+
+00000000 <.debug_info>:
+   0:	38 00       	.word	0x0038;	????	
+   2:	00 00       	.word	0x0000;	????	
+   4:	02 00       	.word	0x0002;	????	
+   6:	00 00       	.word	0x0000;	????	
+   8:	00 00       	.word	0x0000;	????	
+   a:	02 01       	.word	0x0102;	????	
+   c:	00 00       	.word	0x0000;	????	
+   e:	00 00       	.word	0x0000;	????	
+  10:	00 c0       	bic	r0,	r0	
+  12:	04 c1       	bic	r1,	r4	
+  14:	61 33       	jn	$-316    	;abs 0xfed8
+  16:	2e 53       	incd	r14		
+  18:	00 2f       	jc	$-510    	;abs 0xfe1a
+  1a:	68 6f       	addc.b	@r15,	r8	
+  1c:	6d 65       	addc.b	@r5,	r13	
+  1e:	2f 6c       	addc	@r12,	r15	
+  20:	33 2f       	jc	$-408    	;abs 0xfe88
+  22:	43 53       	.word	0x5343;	????	Illegal as emulation instr
+  24:	32 32       	jn	$-922    	;abs 0xfc8a
+  26:	33 30       	jn	$+104    	;abs 0x8e
+  28:	2f 61       	addc	@r1,	r15	
+  2a:	33 00       	.word	0x0033;	????	
+  2c:	47 4e       	mov.b	r14,	r7	
+  2e:	55 20       	jnz	$+172    	;abs 0xda
+  30:	41 53       	add.b	#0,	r1	;r3 As==00
+  32:	20 32       	jn	$-958    	;abs 0xfc74
+  34:	2e 32       	jn	$-930    	;abs 0xfc92
+  36:	31 2e       	jc	$-924    	;abs 0xfc9a
+  38:	31 00       	.word	0x0031;	????	
+  3a:	01 80       	sub	r0,	r1	
+
+Disassembly of section .debug_abbrev:
+
+00000000 <.debug_abbrev>:
+   0:	01 11       	rra	r1		
+   2:	00 10       	rrc	r0		
+   4:	06 11       	rra	r6		
+   6:	01 12       	push	r1		
+   8:	01 03       	.word	0x0301;	????	
+   a:	08 1b       	.word	0x1b08;	????	
+   c:	08 25       	jz	$+530    	;abs 0x21e
+   e:	08 13       	reti			;return from interupt
+  10:	05 00       	.word	0x0005;	????	
+	...
+
+Disassembly of section .debug_line:
+
+00000000 <.debug_line>:
+   0:	77 00       	.word	0x0077;	????	
+   2:	00 00       	.word	0x0000;	????	
+   4:	02 00       	.word	0x0002;	????	
+   6:	1b 00       	.word	0x001b;	????	
+   8:	00 00       	.word	0x0000;	????	
+   a:	01 01       	.word	0x0101;	????	
+   c:	fb 0e       	.word	0x0efb;	????	
+   e:	0d 00       	.word	0x000d;	????	
+  10:	01 01       	.word	0x0101;	????	
+  12:	01 01       	.word	0x0101;	????	
+  14:	00 00       	.word	0x0000;	????	
+  16:	00 01       	.word	0x0100;	????	
+  18:	00 00       	.word	0x0000;	????	
+  1a:	01 00       	.word	0x0001;	????	
+  1c:	61 33       	jn	$-316    	;abs 0xfee0
+  1e:	2e 53       	incd	r14		
+  20:	00 00       	.word	0x0000;	????	
+  22:	00 00       	.word	0x0000;	????	
+  24:	00 00       	.word	0x0000;	????	
+  26:	03 02       	.word	0x0203;	????	
+  28:	00 c0       	bic	r0,	r0	
+  2a:	03 14       	.word	0x1403;	????	
+  2c:	01 67       	addc	r7,	r1	
+  2e:	67 69       	addc.b	@r9,	r7	
+  30:	4d 67       	addc.b	r7,	r13	
+  32:	4b 4b       	mov.b	r11,	r11	
+  34:	4b 4b       	mov.b	r11,	r11	
+  36:	4d 67       	addc.b	r7,	r13	
+  38:	67 67       	addc.b	@r7,	r7	
+  3a:	6b 67       	addc.b	@r7,	r11	
+  3c:	67 4b       	mov.b	@r11,	r7	
+  3e:	67 69       	addc.b	@r9,	r7	
+  40:	2f 32       	jn	$-928    	;abs 0xfca0
+  42:	2f 2f       	jc	$-416    	;abs 0xfea2
+  44:	4b 2f       	jc	$-360    	;abs 0xfedc
+  46:	2f 30       	jn	$+96     	;abs 0xa6
+  48:	4b 4b       	mov.b	r11,	r11	
+  4a:	4b 34       	jge	$+152    	;abs 0xe2
+  4c:	2f 4b       	mov	@r11,	r15	
+  4e:	2f 2f       	jc	$-416    	;abs 0xfeae
+  50:	2f 2f       	jc	$-416    	;abs 0xfeb0
+  52:	2f 34       	jge	$+96     	;abs 0xb2
+  54:	35 4b       	mov	@r11+,	r5	
+  56:	35 2f       	jc	$-404    	;abs 0xfec2
+  58:	30 31       	jn	$+610    	;abs 0x2ba
+  5a:	2f 2f       	jc	$-416    	;abs 0xfeba
+  5c:	2f 2f       	jc	$-416    	;abs 0xfebc
+  5e:	2f 2f       	jc	$-416    	;abs 0xfebe
+  60:	4b 31       	jn	$+664    	;abs 0x2f8
+  62:	4b 2f       	jc	$-360    	;abs 0xfefa
+  64:	4b 4c       	mov.b	r12,	r11	
+  66:	4b 2f       	jc	$-360    	;abs 0xfefe
+  68:	2f 31       	jn	$+608    	;abs 0x2c8
+  6a:	67 2f       	jc	$-304    	;abs 0xff3a
+  6c:	67 30       	jn	$+208    	;abs 0x13c
+  6e:	67 31       	jn	$+720    	;abs 0x33e
+  70:	4b 67       	addc.b	r7,	r11	
+  72:	30 67       	addc	@r7+,	r0	
+  74:	4b 67       	addc.b	r7,	r11	
+  76:	02 02       	.word	0x0202;	????	
+  78:	00 01       	.word	0x0100;	????	
+  7a:	01 40       	Address 0x000000000000007a is out of bounds.
+Address 0x000000000000007c is out of bounds.
+and.b	@r15+,	-1(r15)	;0xffff(r15)
